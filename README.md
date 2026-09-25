@@ -1,6 +1,6 @@
 # ExtractCheck
 
-[![ci](https://github.com/sharantulsiani-ui/extractcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/sharantulsiani-ui/extractcheck/actions/workflows/ci.yml)
+[![ci](https://github.com/St-Gonne/extractcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/St-Gonne/extractcheck/actions/workflows/ci.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](pyproject.toml)
 
@@ -18,6 +18,8 @@ or RAG on top of that parser's output.
 Python 3.11 or newer is required. The package has no runtime dependencies.
 
 ```bash
+git clone https://github.com/St-Gonne/extractcheck.git
+cd extractcheck
 python -m venv .venv
 . .venv/bin/activate
 python -m pip install .
@@ -140,6 +142,12 @@ record](docs/public-decision-and-failure-record.md).
 
 ## Contribute
 
+A useful first contribution is a small synthetic document that exposes a missed
+structure, paired with its expected source locator. An independent run report
+also helps: use the [benchmark-result form](https://github.com/St-Gonne/extractcheck/issues/new?template=benchmark-result.yml)
+and say what passed, failed or was not checked.
+
+
 Send focused bug reports, synthetic failure cases or adapter improvements. Do
 not attach private documents or extracted private content. Read
 [CONTRIBUTING.md](CONTRIBUTING.md) and the [security policy](SECURITY.md) first.
@@ -150,8 +158,16 @@ For local checks:
 PYTHONPATH=src python -m unittest discover -s tests -v
 PYTHONPATH=src python -m extractcheck.cli synthetic --output ./example-output
 PYTHONPATH=src python -m extractcheck.cli compare --output ./comparison-output
-PYTHONPATH=src python tools/audit_release.py --release
+git archive --format=tar --output=../extractcheck-release.tar HEAD
+mkdir ../extractcheck-release
+python -m tarfile -e ../extractcheck-release.tar ../extractcheck-release
+python tools/audit_release.py --release --root ../extractcheck-release
 ```
+
+The release-audit commands use a fresh sibling directory and check committed
+files. The audit intentionally rejects `.git` and generated output folders, so
+running it directly against your working checkout will fail. Use an unused
+archive path and directory for each audit.
 
 Apache-2.0 licensed. Sharan Tulsiani designed and stewards the project. Codex
 wrote the implementation under his direction.
