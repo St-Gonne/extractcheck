@@ -24,8 +24,8 @@ dependencies = []
 extractcheck = "extractcheck.cli:main"
 
 [project.urls]
-Repository = "https://github.com/sharantulsiani-ui/extractcheck"
-Issues = "https://github.com/sharantulsiani-ui/extractcheck/issues"
+Repository = "https://github.com/St-Gonne/extractcheck"
+Issues = "https://github.com/St-Gonne/extractcheck/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

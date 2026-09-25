@@ -31,13 +31,12 @@ Use Python 3.11 or newer.
 PYTHONPATH=src python -m unittest discover -s tests -v
 PYTHONPATH=src python -m extractcheck.cli synthetic --output ./example-output
 PYTHONPATH=src python -m extractcheck.cli compare --output ./comparison-output
-PYTHONPATH=src python tools/audit_release.py --release
 python -m compileall -q src tests tools
 ```
 
-The release audit is fail-closed. Run it from a clean source copy or a
-`git archive`; a live checkout contains `.git`, which the audit rejects on
-purpose.
+The release audit is fail-closed. Follow the fresh `git archive` commands in
+[the README](README.md#contribute) to audit committed files. A live checkout
+contains `.git` and generated outputs, which the audit rejects on purpose.
 
 ## Open the change
 
