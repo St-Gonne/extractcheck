@@ -8,3 +8,4 @@ dist/
 .venv/
 example-output/
 comparison-output/
+openpyxl-demo-output/
