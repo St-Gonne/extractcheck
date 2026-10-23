@@ -53,6 +53,10 @@ The reference adapter is an example, not a parser recommendation. It and the
 census use separate code paths. Neither sees private files, and neither writes
 an index or graph.
 
+For a real-library example, try the [openpyxl reading-mode demo](docs/openpyxl-demo.md).
+Both modes recover the same five cell coordinates, but only one retains the
+formula. It uses a generated workbook and optional dependencies.
+
 ## What it checks
 
 | Format | Structural checks |

@@ -20,6 +20,9 @@ classifiers = [
 ]
 dependencies = []
 
+[project.optional-dependencies]
+demo = ["openpyxl==3.1.5"]
+
 [project.scripts]
 extractcheck = "extractcheck.cli:main"
 
